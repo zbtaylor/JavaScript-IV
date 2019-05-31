@@ -26,6 +26,10 @@ class Instructor extends Person {
 	grade(student, subject) {
 		console.log(`${student.name} receives a perfect score on ${subject}`);
 	}
+
+	changeGrade(student) {
+		student.grade = Math.floor(Math.random() * 100);
+	}
 }
 
 class Student extends Person {
@@ -34,6 +38,7 @@ class Student extends Person {
 		this.previousBackground = props.previousBackground;
 		this.className = props.className;
 		this.favSubjects = props.favSubjects;
+		this.grade = props.grade;
 	}
 
 	listsSubjects() {
@@ -93,7 +98,8 @@ const Zach = new Student({
 	location: "Maryland",
 	previousBackground: "Graphic Design",
 	className: "WebPT7",
-	favSubjects: ["ES6", "FlexBox", "Type Coersion"]
+	favSubjects: ["ES6", "FlexBox", "Type Coersion"],
+	grade: 80
 });
 
 const Brian = new Student({
@@ -102,7 +108,8 @@ const Brian = new Student({
 	location: "Idaho",
 	previousBackground: "College",
 	className: "WebPT7",
-	favSubjects: ["Prototypes", "Floats", "Box Model"]
+	favSubjects: ["Prototypes", "Floats", "Box Model"],
+	grade: 85
 });
 
 // Project Managers
@@ -141,3 +148,13 @@ Zach.prAssignments("JS Classes");
 Brian.sprintChallenge("JSIV");
 Ryan.standUp("Webtpt7_ryanf");
 Josh.debugsCode(Brian, "FlexBox");
+
+// Stretch
+
+console.log(`Zach's grade was: ${Zach.grade}`);
+Dan.changeGrade(Zach); // Instructor
+console.log(`Dan changed it to: ${Zach.grade}`);
+
+console.log(`Brian's grade was: ${Brian.grade}`);
+Ryan.changeGrade(Brian); // PM
+console.log(`Ryan changed it to: ${Brian.grade}`);
